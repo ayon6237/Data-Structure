@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+struct node{
+    int data;
+    node *next;
+};
+int main()
+{
+    node *fptr,*nptr,*tptr,*eptr;
+    fptr=NULL;
+    for(int i=0;i<5;i++)
+    {
+
+        int item;
+        cin>>item;
+        nptr=new(node);
+        nptr->data=item;
+        nptr->next=NULL;
+
+        if(fptr==NULL)
+        {
+            fptr=nptr;
+            eptr=nptr;
+        }
+        else{
+            eptr->next=nptr;
+            eptr=nptr;
+        }
+    }
+    tptr=fptr;
+    for(int i=0;i<5;i++)
+    {
+        cout<<tptr->data;
+        tptr=tptr->next;
+        cout<<" ";
+    }
+    cout<<endl;
+
+    //inserted code here//
+    int insertVal;
+    cin>>insertVal;
+    nptr=new(node);
+    nptr->data=insertVal;
+    nptr->next=NULL;
+
+    tptr=fptr;
+    while(tptr!=NULL && tptr->data!=4)
+    {
+        tptr=tptr->next;
+    }
+    if(tptr!=NULL)
+        {
+           nptr->next=tptr->next;
+           tptr->next=nptr;
+        }
+
+
+
+    tptr=fptr;
+    while(tptr!=NULL)
+    {
+        cout<<tptr->data;
+        tptr=tptr->next;
+        cout<<" ";
+    }
+
+
+
+
+
+    return 0;
+
+}
